@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net/http"
 	"net"
+	"net/http"
 	"time"
 )
 
@@ -119,9 +119,19 @@ func (c *Client) SetHTTPClient(client *http.Client) {
 	c.clientHttp = client
 }
 
-// SetData Set data for message
+// SetData set data for message
 func (c *Client) SetData(d interface{}) {
 	c.Message.Data = d
+}
+
+// SetNotification set notification for message
+func (c *Client) SetNotification(n *NotificationPayload) {
+	c.Message.Notification = n
+}
+
+// SetPriority set priority for message (HighPriority or NormalPriority)
+func (c *Client) SetPriority(priority string) {
+	c.Message.Priority = priority
 }
 
 // SetMsgAndTo 'To' this parameter specifies the recipient of a message.
